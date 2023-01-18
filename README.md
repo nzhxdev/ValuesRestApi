@@ -1,5 +1,5 @@
 ## Example of solving a test task
-This is a simple REST API (Java 11, Spring Boot, Sprint Data Jpa) with a PostgreSQL database.
+This is a simple REST API (Java 11, Spring Boot, Spring Data Jpa) with a PostgreSQL database.
 
 ### Features
 With HTTP requests you can perform the following actions:
