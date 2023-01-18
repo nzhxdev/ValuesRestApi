@@ -7,7 +7,7 @@ With HTTP requests you can perform the following actions:
 - _Getting the list of records in JSON format;_
 - _Editing records;_
 - _Delete all records (batched)._
-- 
+
 #### Table Structure
 | ID  | DATE                 | VALUE   |
 |-----|----------------------|---------|
