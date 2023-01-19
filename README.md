@@ -2,7 +2,7 @@
 This is a simple REST API (Java 11, Spring Boot, Spring Data Jpa) with a PostgreSQL database.
 
 ### Features
-With HTTP requests you can perform the following actions:
+Using http requests, you can do the following:
 - _Creating records (batched);_
 - _Getting the list of records in JSON format;_
 - _Editing records;_
