@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -128,5 +129,18 @@ public class QueryParameter {
                     .boxed()
                     .collect(Collectors.toList());
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        QueryParameter parameter = (QueryParameter) o;
+        return idEquals == parameter.idEquals && idGreaterThan == parameter.idGreaterThan && idLessThan == parameter.idLessThan && idRangeFrom == parameter.idRangeFrom && idRangeTo == parameter.idRangeTo && Objects.equals(valueContains, parameter.valueContains) && Objects.equals(valueEquals, parameter.valueEquals) && Objects.equals(sortField, parameter.sortField) && Objects.equals(dateEquals, parameter.dateEquals) && Objects.equals(dateGreaterThan, parameter.dateGreaterThan) && Objects.equals(dateLessThan, parameter.dateLessThan) && sortingType == parameter.sortingType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(valueContains, valueEquals, sortField, dateEquals, dateGreaterThan, dateLessThan, idEquals, idGreaterThan, idLessThan, idRangeFrom, idRangeTo, sortingType);
     }
 }

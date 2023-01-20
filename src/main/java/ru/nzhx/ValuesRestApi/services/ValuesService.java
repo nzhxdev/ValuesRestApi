@@ -14,6 +14,7 @@ import java.util.*;
 @Service
 @Transactional(readOnly = true)
 public class ValuesService {
+    private static final long MINIMUM_NUMBER_OF_VALUES_TO_CREATE = 1;
     private final ValuesRepository valuesRepository;
 
     @Autowired
@@ -26,6 +27,8 @@ public class ValuesService {
 
     @Transactional
     public void createValues(int numberOfValues) {
+        if (numberOfValues < MINIMUM_NUMBER_OF_VALUES_TO_CREATE)
+            throw new NumberFormatException("Number of values should be greater then 0.");
         List<Value> listValuesForSaveToDB = createListValuesForSaveToDB(numberOfValues);
         valuesRepository.saveAll(listValuesForSaveToDB);
     }
