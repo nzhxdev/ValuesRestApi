@@ -18,7 +18,7 @@ Using HTTP requests, you can do the following:
 
 #### Creating records
 The "number" parameter takes an integer value greater than 0.  
-The query creates the number of records in the table specified in the "number" parameter.
+The request creates the number of records in the table specified in the "number" parameter.
 
 ```http request
 POST /api/values?number=99 
@@ -42,8 +42,8 @@ PATCH /api/values/:id
   "value" : "Updated value 1"
 }
 ```
-When the query is executed, the record with the identifier specified in the query is edited.  
-Sets a new value in the "VALUE" field specified in the body of the query and sets the date of change in the "DATE" field.
+When the request is executed, the record with the identifier specified in the request is edited.  
+Sets a new value in the "VALUE" field specified in the body of the request and sets the date of change in the "DATE" field.
 #### Getting the list of records
 Get the whole table "VALUES" in JSON format with the possibility to filter and sort values by "ID", "DATE" and "VALUE" fields using query parameters.
 ```http request
