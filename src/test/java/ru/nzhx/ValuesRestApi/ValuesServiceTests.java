@@ -1,5 +1,6 @@
 package ru.nzhx.ValuesRestApi;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -23,7 +24,7 @@ import static org.mockito.Mockito.verify;
 
 
 @ExtendWith(MockitoExtension.class)
-public class ValueServiceTests {
+public class ValuesServiceTests {
     @Mock
     private  ValuesRepository valuesRepository;
     @InjectMocks
@@ -34,6 +35,7 @@ public class ValueServiceTests {
     private static final long UPDATED_VALUE_ID = 1L;
 
     @Test
+    @DisplayName("Testing the function of getting the list of values from the database")
     public void successfulGetValues() {
         Map<String, String> parametersFromURLQuery = new HashMap<>();
         QueryParameter queryParameter = new QueryParameter(parametersFromURLQuery);
@@ -48,6 +50,7 @@ public class ValueServiceTests {
     }
 
     @Test
+    @DisplayName("Testing the function of creating a given number of values in the database")
     public void successfulCreateValues() {
         valuesService.createValues(NUMBER_OF_VALUES);
 
@@ -55,6 +58,7 @@ public class ValueServiceTests {
     }
 
     @Test
+    @DisplayName("Testing a function to create a list of values if the number of values is greater than 0")
     public void successfulCreateListValuesForSaveToDB() {
         List<Value> listValuesForSaveToDB = valuesService.createListValuesForSaveToDB(NUMBER_OF_VALUES);
 
@@ -62,12 +66,14 @@ public class ValueServiceTests {
     }
 
     @Test
+    @DisplayName("Testing a function to create a list of values if the number of values is less than 0")
     public void unsuccessfulCreateValuesIfNumberOfValueLessThenOne() {
         assertThrows(NumberFormatException.class, () -> valuesService.createValues(WRONG_NUMBER_OF_VALUES));
         verify(valuesRepository, never()).saveAll(anyList());
     }
 
     @Test
+    @DisplayName("Testing the function of updating the value in the database, if it exists")
     public void successfulUpdateValue() {
         Value updateValue = new Value("Value 2");
         Value valueFromTable = new Value("Value 1");
@@ -80,6 +86,7 @@ public class ValueServiceTests {
     }
 
     @Test
+    @DisplayName("Testing the function of updating the value in the database, if it doesn't exist")
     public void unsuccessfulUpdateValueIfValueWithSpecifiedIdDoesntExist() {
         Value updateValue = new Value("Value 2");
         given(valuesRepository.findById(UPDATED_VALUE_ID)).willReturn(Optional.empty());
@@ -89,6 +96,7 @@ public class ValueServiceTests {
     }
 
     @Test
+    @DisplayName("Testing the function of removing values from the database, if they exist")
     public void successfulDeleteAll() {
         List<Value> valuesToDelete = new ArrayList<>();
         valuesToDelete.add(new Value("Value 1"));
@@ -100,6 +108,7 @@ public class ValueServiceTests {
     }
 
     @Test
+    @DisplayName("Testing the function of removing values from the database, if they don't exist")
     public void unsuccessfulDeleteAllIfValuesDontExist() {
         List<Value> emptyListOfValues = new ArrayList<>();
         given(valuesRepository.findAll()).willReturn(emptyListOfValues);

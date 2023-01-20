@@ -39,8 +39,8 @@ public class ValuesController {
 
     @PostMapping("/values")
     public ResponseEntity<HttpStatus> createValues(@RequestParam("number") @Min(value = MINIMUM_NUMBER_OF_VALUES_TO_CREATE,
-            message = "Field value 'number' should be greater then 0.") Integer number) {
-        valuesService.createValues(number);
+            message = "Field value 'number' should be greater then 0.") Integer numberOfValues) {
+        valuesService.createValues(numberOfValues);
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
 
@@ -53,7 +53,7 @@ public class ValuesController {
     @PatchMapping("/values/{id}")
     public ResponseEntity<HttpStatus> updateValue(
             @PathVariable("id") @Min(value = 1, message = "Field value 'id' should be greater then 0.") Long id,
-            @RequestBody @Valid ValueDTO valueDTO, BindingResult bindingResult) {
+            @RequestBody @Valid ValueDTO updatedValueDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             StringBuilder errorMessage = new StringBuilder();
             List<FieldError> errors = bindingResult.getFieldErrors();
@@ -61,7 +61,8 @@ public class ValuesController {
                 errorMessage.append(error.getDefaultMessage());
             throw new ValueNotUpdatedException(errorMessage.toString());
         }
-        valuesService.updateValue(id, convertToValue(valueDTO));
+        Value updatedValue = convertToValue(updatedValueDTO);
+        valuesService.updateValue(id, updatedValue);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 

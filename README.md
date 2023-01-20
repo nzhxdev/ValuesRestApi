@@ -19,8 +19,9 @@ Using HTTP requests, you can do the following:
 #### Creating records
 The "number" parameter takes an integer value greater than 0.  
 The query creates the number of records in the table specified in the "number" parameter.
+
 ```http request
-POST /api/values?number=99 
+POST /api/values?numberOfValues=99 
 ```
 The following fields will be populated in the record being created:  
 - _DATE_ - the current date will be written;  

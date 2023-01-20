@@ -1,7 +1,10 @@
 package ru.nzhx.ValuesRestApi.model.dto;
 
+import ru.nzhx.ValuesRestApi.model.Value;
+
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
+import java.util.function.Function;
 
 public class ValueDTO {
 
@@ -9,7 +12,7 @@ public class ValueDTO {
 
     private LocalDateTime date;
 
-    @NotEmpty(message = "Поле 'value' должно быть заполнено.")
+    @NotEmpty(message = "The 'value' field should be filled in.")
     private String value;
 
     public ValueDTO() {}
