@@ -51,7 +51,7 @@ public class ValuesControllerTests {
         ResponseEntity<HttpStatus> response = valuesController.deleteValues();
 
         verify(valuesService).deleteAll();
-        assertEquals(ResponseEntity.ok(HttpStatus.NO_CONTENT), response);
+        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
     }
     
     @Test
@@ -65,7 +65,7 @@ public class ValuesControllerTests {
         ResponseEntity<HttpStatus> response = valuesController.updateValue(updatedValueId, updatedValueDTO, bindingResult);
 
         verify(valuesService).updateValue(updatedValueId,updatedValue);
-        assertEquals(ResponseEntity.ok(HttpStatus.OK), response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
