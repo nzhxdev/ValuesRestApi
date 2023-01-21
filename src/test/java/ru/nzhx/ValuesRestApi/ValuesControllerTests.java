@@ -39,11 +39,10 @@ public class ValuesControllerTests {
     @DisplayName("Testing a function call to create values and return response")
     public void successfulCreateValues() {
         int numberOfValueToCreate = 10;
-
         ResponseEntity<HttpStatus> response = valuesController.createValues(numberOfValueToCreate);
 
         verify(valuesService).createValues(numberOfValueToCreate);
-        assertEquals(ResponseEntity.ok(HttpStatus.CREATED), response);
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
     }
 
     @Test

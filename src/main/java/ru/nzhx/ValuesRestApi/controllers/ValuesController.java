@@ -17,6 +17,7 @@ import ru.nzhx.ValuesRestApi.util.ValueNotUpdatedException;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import java.net.URI;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Map;
@@ -41,13 +42,13 @@ public class ValuesController {
     public ResponseEntity<HttpStatus> createValues(@RequestParam("number") @Min(value = MINIMUM_NUMBER_OF_VALUES_TO_CREATE,
             message = "Field value 'number' should be greater then 0.") Integer numberOfValues) {
         valuesService.createValues(numberOfValues);
-        return ResponseEntity.ok(HttpStatus.CREATED);
+        return ResponseEntity.created(URI.create("#")).build();
     }
 
     @DeleteMapping("/values")
     public ResponseEntity<HttpStatus> deleteValues() {
         valuesService.deleteAll();
-        return ResponseEntity.ok(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
 
     @PatchMapping("/values/{id}")
@@ -63,7 +64,7 @@ public class ValuesController {
         }
         Value updatedValue = convertToValue(updatedValueDTO);
         valuesService.updateValue(id, updatedValue);
-        return ResponseEntity.ok(HttpStatus.OK);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/values")
