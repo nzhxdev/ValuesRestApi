@@ -105,7 +105,7 @@ public class ValuesController {
 
     @ExceptionHandler
     ResponseEntity<String> handleException(DateTimeParseException e) {
-        String errorMessage = " - Incorrect date format. The date should be in the format 'yyyyy-mm-ddThh:mm:ss'.";
+        String errorMessage = " - Incorrect date format. The date should be in the format 'yyyyy-mm-dd hh:mm:ss'.";
         return new ResponseEntity<>(e.getParsedString() + errorMessage, HttpStatus.BAD_REQUEST);
     }
 
