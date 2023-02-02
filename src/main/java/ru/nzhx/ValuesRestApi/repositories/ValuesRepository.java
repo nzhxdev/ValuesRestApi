@@ -3,7 +3,7 @@ package ru.nzhx.ValuesRestApi.repositories;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import ru.nzhx.ValuesRestApi.model.QueryParameter;
+import ru.nzhx.ValuesRestApi.util.QueryParameter;
 import ru.nzhx.ValuesRestApi.model.Value;
 
 import java.util.List;

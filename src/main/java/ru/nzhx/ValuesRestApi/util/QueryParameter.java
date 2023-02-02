@@ -1,4 +1,4 @@
-package ru.nzhx.ValuesRestApi.model;
+package ru.nzhx.ValuesRestApi.util;
 
 import org.springframework.data.domain.Sort;
 

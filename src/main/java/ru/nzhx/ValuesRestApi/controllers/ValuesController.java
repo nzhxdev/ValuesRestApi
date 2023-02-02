@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.nzhx.ValuesRestApi.model.dto.ValueDTO;
 import ru.nzhx.ValuesRestApi.model.Value;
 import ru.nzhx.ValuesRestApi.services.ValuesService;
-import ru.nzhx.ValuesRestApi.util.ValueNotFoundException;
 import ru.nzhx.ValuesRestApi.util.ValueNotUpdatedException;
 
-import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.net.URI;
@@ -85,32 +83,5 @@ public class ValuesController {
 
     private ValueDTO convertToValueDTO(Value person) {
         return modelMapper.map(person, ValueDTO.class);
-    }
-
-    @ExceptionHandler(ConstraintViolationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    ResponseEntity<String> handleConstraintViolationException(ConstraintViolationException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler
-    ResponseEntity<String> handleException(ValueNotFoundException e) {
-        return new ResponseEntity<>("Value with the specified 'id' doesn't exist.", HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler
-    ResponseEntity<String> handleException(ValueNotUpdatedException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler
-    ResponseEntity<String> handleException(DateTimeParseException e) {
-        String errorMessage = " - Incorrect date format. The date should be in the format 'yyyyy-mm-dd hh:mm:ss'.";
-        return new ResponseEntity<>(e.getParsedString() + errorMessage, HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler
-    ResponseEntity<String> handleException(NumberFormatException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }

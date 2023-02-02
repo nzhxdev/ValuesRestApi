@@ -7,7 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Sort;
-import ru.nzhx.ValuesRestApi.model.QueryParameter;
+import ru.nzhx.ValuesRestApi.util.QueryParameter;
 import ru.nzhx.ValuesRestApi.model.Value;
 import ru.nzhx.ValuesRestApi.repositories.ValuesRepository;
 import ru.nzhx.ValuesRestApi.services.ValuesService;

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.nzhx.ValuesRestApi.model.QueryParameter;
+import ru.nzhx.ValuesRestApi.util.QueryParameter;
 import ru.nzhx.ValuesRestApi.model.Value;
 import ru.nzhx.ValuesRestApi.repositories.ValuesRepository;
 import ru.nzhx.ValuesRestApi.util.ValueNotFoundException;
