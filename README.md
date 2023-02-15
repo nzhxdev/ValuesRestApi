@@ -101,7 +101,13 @@ spring.jpa.properties.hibernate.jdbc.batch_versioned_data = true
 
 ### Create and run the .jar file
 ```shell
-%Path%\ValuesRestApi>mvn install
+%Path%\ValuesRestApi>./mvnw package
+%Path%\ValuesRestApi>cd target
+%Path%\ValuesRestApi\target>java -jar ValueRestApi-0.0.1-SNAPSHOT.jar 
+```
+or
+```shell
+%Path%\ValuesRestApi>mvnw.cmd package
 %Path%\ValuesRestApi>cd target
 %Path%\ValuesRestApi\target>java -jar ValueRestApi-0.0.1-SNAPSHOT.jar 
 ```
